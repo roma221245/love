@@ -3,24 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️ Для тебя ❤️</title>
+<title>❤️ Для Анюты ❤️</title>
 
 <style>
+
 body{
     margin:0;
     overflow:hidden;
-    background:#0f0f1e;
+
+    background:linear-gradient(
+        180deg,
+        #0f0f1e 0%,
+        #16163a 50%,
+        #0f0f1e 100%
+    );
+
     color:white;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+
+    min-height:100vh;
 }
 
 .container{
     text-align:center;
+
+    max-width:800px;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(10px);
+
+    padding:40px;
+
+    border-radius:25px;
+
+    box-shadow:0 0 30px rgba(255,255,255,0.08);
+
     z-index:10;
+
+    animation:fadeIn 1.5s;
 }
 
 h1{
@@ -30,14 +55,33 @@ h1{
 
 p{
     font-size:24px;
+    line-height:1.6;
 }
 
 button{
     padding:15px 30px;
+
     font-size:20px;
+
     border:none;
+
     border-radius:15px;
+
     cursor:pointer;
+
+    color:white;
+
+    background:linear-gradient(
+        45deg,
+        #ff4d88,
+        #ff7eb3
+    );
+
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
 }
 
 .hidden{
@@ -46,7 +90,9 @@ button{
 
 .heart{
     position:absolute;
+
     color:pink;
+
     animation:float 8s linear infinite;
 }
 
@@ -62,40 +108,89 @@ button{
 }
 
 .big-heart{
-    font-size:120px;
+    font-size:140px;
+
     animation:beat 1s infinite;
+
+    filter:drop-shadow(
+        0 0 20px #ff4d88
+    );
 }
 
 @keyframes beat{
     0%{transform:scale(1);}
-    50%{transform:scale(1.2);}
+    50%{transform:scale(1.25);}
     100%{transform:scale(1);}
 }
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+#days-counter{
+    color:#ff7eb3;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    margin-top:20px;
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="container" id="start">
+
     <h1>❤️ Привет ❤️</h1>
-    <p>У меня есть кое-что для тебя...</p>
-    <button onclick="showLove()">Открыть ❤️</button>
+
+    <p>
+        У меня есть кое-что для тебя...
+    </p>
+
+    <button onclick="showLove()">
+        Открыть ❤️
+    </button>
+
 </div>
 
 <div class="container hidden" id="love">
-    <div class="big-heart">❤️</div>
 
-    <h1>Для Анюты❤️</h1>
+    <div class="big-heart">
+        ❤️
+    </div>
+
+    <h1>
+        Для Анюты ❤️
+    </h1>
 
     <p>
-        Я сделал этот сайт специально для тебя.<br><br>
-        Спасибо, что ты есть в моей жизни.<br>
-        Ты делаешь мои дни лучше 😊❤️
-        Мы знакомы уже 181 день ❤️
+        Я сделал этот сайт специально для тебя ❤️
+        <br><br>
+
+        Спасибо, что ты есть в моей жизни.
+        <br>
+
+        Ты делаешь мои дни лучше 😊
     </p>
+
+    <h2 id="days-counter"></h2>
+
     <a href="secret.html">
-    <button>💌 Открыть секрет</button>
-</a>
+        <button>
+            💌 Открыть секрет
+        </button>
+    </a>
+
 </div>
 
 <script>
@@ -105,14 +200,32 @@ function showLove(){
     document.getElementById("love").classList.remove("hidden");
 }
 
+const startDate = new Date("2025-12-03");
+
+const today = new Date();
+
+const days = Math.floor(
+    (today - startDate) /
+    (1000 * 60 * 60 * 24)
+);
+
+document.getElementById("days-counter").innerHTML =
+`❤️ Мы знакомы уже ${days} дней ❤️`;
+
 function createHeart(){
-    const heart=document.createElement("div");
+
+    const heart =
+        document.createElement("div");
 
     heart.classList.add("heart");
-    heart.innerHTML="❤️";
 
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(20+Math.random()*40)+"px";
+    heart.innerHTML = "❤️";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (20 + Math.random() * 40) + "px";
 
     document.body.appendChild(heart);
 
