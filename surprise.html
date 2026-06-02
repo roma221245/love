@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>❤️ Сюрприз ❤️</title>
+
+<style>
+body{
+    background:#0f0f1e;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    overflow:hidden;
+}
+
+#message{
+    margin-top:150px;
+    font-size:35px;
+}
+
+#heart{
+    display:none;
+    font-size:150px;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.3);}
+    100%{transform:scale(1);}
+}
+</style>
+
+</head>
+<body>
+
+<div id="message"></div>
+
+<div id="heart">
+❤️
+</div>
+
+<script>
+
+const messages = [
+    "Привет ❤️",
+    "У меня есть кое-что для тебя...",
+    "Спасибо за всё 😊",
+    "Ты делаешь мои дни лучше ❤️",
+    "Я очень рад, что встретил тебя ❤️"
+];
+
+let index = 0;
+
+function nextMessage(){
+
+    if(index < messages.length){
+
+        document.getElementById("message").innerHTML =
+            messages[index];
+
+        index++;
+
+    }else{
+
+        document.getElementById("message").innerHTML =
+            "❤️";
+
+        document.getElementById("heart").style.display =
+            "block";
+
+        clearInterval(timer);
+    }
+}
+
+nextMessage();
+
+const timer =
+    setInterval(nextMessage,3000);
+
+</script>
+
+</body>
+</html>
