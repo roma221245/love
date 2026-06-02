@@ -2,27 +2,65 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>❤️ Последний сюрприз ❤️</title>
 
 <style>
+
 body{
     margin:0;
-    background:#0f0f1e;
+
+    background:linear-gradient(
+        180deg,
+        #0f0f1e,
+        #1f1f4a
+    );
+
     color:white;
     font-family:Arial,sans-serif;
     text-align:center;
+
     overflow:hidden;
 }
 
 #message{
     margin-top:150px;
+
     font-size:36px;
+
+    min-height:120px;
 }
 
 #heart{
     display:none;
+
     font-size:180px;
+
     animation:beat 1s infinite;
+
+    filter:drop-shadow(
+        0 0 30px #ff4d88
+    );
+}
+
+button{
+    padding:15px 30px;
+
+    border:none;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:linear-gradient(
+        45deg,
+        #ff4d88,
+        #ff7eb3
+    );
 }
 
 @keyframes beat{
@@ -30,6 +68,7 @@ body{
     50%{transform:scale(1.3);}
     100%{transform:scale(1);}
 }
+
 </style>
 </head>
 
@@ -39,6 +78,8 @@ body{
 
 <div id="heart">
 ❤️
+<br>
+Для Анюты ❤️
 </div>
 
 <script>
@@ -47,8 +88,9 @@ const messages = [
     "Привет ❤️",
     "Спасибо, что открыла этот сайт 😊",
     "Я сделал его специально для тебя ❤️",
-    "Ты делаешь мои дни лучше 🌹",
-    "Я очень рад, что познакомился с тобой ❤️"
+    "Каждый день общения с тобой особенный 🌹",
+    "Ты очень дорога мне ❤️",
+    "Спасибо, что ты есть ❤️"
 ];
 
 let index = 0;
@@ -76,22 +118,10 @@ function nextMessage(){
 
 nextMessage();
 
-const timer = setInterval(nextMessage, 3000);
+const timer =
+setInterval(nextMessage,3000);
 
 </script>
 
 </body>
-    <button onclick="showFinalMessage()">
-    ❤️ Нажми меня ❤️
-</button>
-
-<p id="final-message"></p>
-
-<script>
-function showFinalMessage(){
-    document.getElementById("final-message").innerHTML =
-    "❤️ Спасибо, что ты есть в моей жизни ❤️";
-}
-</script>
-</button>
 </html>
