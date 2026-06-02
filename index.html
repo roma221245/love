@@ -1,82 +1,125 @@
-import arcade
-import math
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ Для тебя ❤️</title>
 
-WIDTH = 1000
-HEIGHT = 700
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    background:#0f0f1e;
+    color:white;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
 
+.container{
+    text-align:center;
+    z-index:10;
+}
 
-class LoveStory(arcade.Window):
-    def __init__(self):
-        super().__init__(WIDTH, HEIGHT, "❤️ Для тебя ❤️")
+h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
 
-        self.timer = 0
+p{
+    font-size:24px;
+}
 
-        self.messages = [
-            (2, "Привет ❤️"),
-            (5, "Я написал эту программу специально для тебя"),
-            (8, "Потому что ты очень важна для меня"),
-            (11, "И я хочу, чтобы ты улыбнулась 😊"),
-            (14, "Спасибо, что ты есть в моей жизни ❤️")
-        ]
+button{
+    padding:15px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+}
 
-    def on_update(self, delta_time):
-        self.timer += delta_time
+.hidden{
+    display:none;
+}
 
-    def draw_heart(self):
-        scale = 12 + math.sin(self.timer * 4) * 1.5
+.heart{
+    position:absolute;
+    color:pink;
+    animation:float 8s linear infinite;
+}
 
-        points = []
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
 
-        for t in range(360):
-            angle = math.radians(t)
+.big-heart{
+    font-size:120px;
+    animation:beat 1s infinite;
+}
 
-            x = 16 * math.sin(angle) ** 3
-            y = (
-                13 * math.cos(angle)
-                - 5 * math.cos(2 * angle)
-                - 2 * math.cos(3 * angle)
-                - math.cos(4 * angle)
-            )
+@keyframes beat{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+</style>
+</head>
 
-            x = x * scale + WIDTH / 2
-            y = y * scale + HEIGHT / 2 - 50
+<body>
 
-            points.append((x, y))
+<div class="container" id="start">
+    <h1>❤️ Привет ❤️</h1>
+    <p>У меня есть кое-что для тебя...</p>
+    <button onclick="showLove()">Открыть ❤️</button>
+</div>
 
-        arcade.draw_polygon_filled(points, arcade.color.RED)
+<div class="container hidden" id="love">
+    <div class="big-heart">❤️</div>
 
-    def on_draw(self):
-        self.clear()
+    <h1>Для Ани ❤️</h1>
 
-        arcade.set_background_color((15, 15, 30))
+    <p>
+        Я сделал этот сайт специально для тебя.<br><br>
+        Спасибо, что ты есть в моей жизни.<br>
+        Ты делаешь мои дни лучше 😊❤️
+    </p>
+</div>
 
-        visible_text = ""
+<script>
 
-        for time_needed, text in self.messages:
-            if self.timer >= time_needed:
-                visible_text = text
+function showLove(){
+    document.getElementById("start").classList.add("hidden");
+    document.getElementById("love").classList.remove("hidden");
+}
 
-        arcade.draw_text(
-            visible_text,
-            WIDTH / 2,
-            120,
-            arcade.color.WHITE,
-            28,
-            anchor_x="center"
-        )
+function createHeart(){
+    const heart=document.createElement("div");
 
-        if self.timer >= 14:
-            self.draw_heart()
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
 
-            arcade.draw_text(
-                "❤️ Я люблю тебя ❤️",
-                WIDTH / 2,
-                500,
-                arcade.color.PINK,
-                36,
-                anchor_x="center"
-            )
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*40)+"px";
 
+    document.body.appendChild(heart);
 
-window = LoveStory()
-arcade.run()
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
