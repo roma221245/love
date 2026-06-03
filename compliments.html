@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Комплименты для Анюты 💖</title>
+
+<style>
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        180deg,
+        #0f0f1e 0%,
+        #16163a 50%,
+        #0f0f1e 100%
+    );
+
+    font-family:Arial,sans-serif;
+    color:white;
+}
+
+.container{
+    text-align:center;
+
+    max-width:800px;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(10px);
+
+    padding:40px;
+
+    border-radius:25px;
+
+    box-shadow:0 0 30px rgba(255,255,255,0.08);
+}
+
+h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+button{
+    padding:15px 30px;
+
+    font-size:22px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:linear-gradient(
+        45deg,
+        #ff4d88,
+        #ff7eb3
+    );
+
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+#compliment{
+    margin-top:30px;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:#ff7eb3;
+
+    min-height:80px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.back{
+    margin-top:30px;
+}
+
+a{
+    text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<h1>💖 Комплименты для Анюты 💖</h1>
+
+<p>
+    Нажми на кнопку и получи случайный комплимент ❤️
+</p>
+
+<button onclick="randomCompliment()">
+    ✨ Получить комплимент ✨
+</button>
+
+<div id="compliment">
+    ❤️
+</div>
+
+<div class="back">
+    <a href="index.html">
+        <button>
+            ⬅ Вернуться назад
+        </button>
+    </a>
+</div>
+```
+
+</div>
+
+<script>
+
+const compliments = [
+    "Я люблю тебя ❤️",
+    "Ты моя любимая девочка 🥰",
+    "Спасибо, что ты есть в моей жизни 💕",
+    "Мне нравится твоя улыбка 😊",
+    "Ты делаешь мои дни лучше 🌸",
+    "Я очень ценю тебя ❤️",
+    "Ты очень красивая 🥰",
+    "Мне нравится проводить время с тобой 💖",
+    "Я скучаю по тебе ❤️",
+    "Ты особенная для меня ✨",
+    "Ты делаешь меня счастливым ❤️",
+    "Мне очень повезло встретить тебя 🥰",
+    "С тобой любой день становится лучше 🌷",
+    "Ты самая прекрасная ❤️",
+    "Мне нравится твой смех 😊",
+    "Ты очень важна для меня 💕",
+    "Ты делаешь мой мир ярче ✨",
+    "Мне спокойно рядом с тобой ❤️",
+    "Ты лучшее, что случилось со мной 🥰",
+    "Я благодарен за каждый день с тобой 💖"
+];
+
+function randomCompliment(){
+
+    const random =
+        compliments[
+            Math.floor(
+                Math.random() * compliments.length
+            )
+        ];
+
+    document.getElementById("compliment").innerHTML = random;
+}
+
+</script>
+
+</body>
+</html>
