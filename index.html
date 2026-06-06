@@ -1,9 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>❤️ Для Анюты ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,7 +24,8 @@ body{
     );
 
     color:white;
-    font-family:Arial,sans-serif;
+
+    font-family:'Montserrat',sans-serif;
 
     display:flex;
     justify-content:center;
@@ -29,19 +35,23 @@ body{
 }
 
 .container{
+
     text-align:center;
 
     max-width:800px;
 
     background:rgba(255,255,255,0.05);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(12px);
 
-    padding:40px;
+    padding:45px;
 
-    border-radius:25px;
+    border-radius:30px;
 
-    box-shadow:0 0 30px rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+    0 0 35px rgba(255,126,179,0.12);
 
     z-index:10;
 
@@ -49,23 +59,37 @@ body{
 }
 
 h1{
-    font-size:50px;
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:76px;
+
+    color:#ffd1dc;
+
+    text-shadow:
+    0 0 12px rgba(255,126,179,0.5);
+
     margin-bottom:20px;
 }
 
 p{
-    font-size:24px;
-    line-height:1.6;
+
+    font-size:23px;
+
+    line-height:1.8;
+
+    font-weight:300;
 }
 
 button{
-    padding:15px 30px;
+
+    padding:16px 34px;
 
     font-size:20px;
 
     border:none;
 
-    border-radius:15px;
+    border-radius:18px;
 
     cursor:pointer;
 
@@ -89,11 +113,37 @@ button:hover{
 }
 
 .heart{
+
     position:absolute;
 
     color:pink;
 
     animation:float 8s linear infinite;
+}
+
+.big-heart{
+
+    font-size:150px;
+
+    animation:beat 1s infinite;
+
+    filter:drop-shadow(
+        0 0 25px #ff4d88
+    );
+}
+
+#days-counter{
+
+    color:#ffb6c1;
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:44px;
+
+    margin-top:25px;
+
+    text-shadow:
+    0 0 12px rgba(255,126,179,0.5);
 }
 
 @keyframes float{
@@ -107,16 +157,6 @@ button:hover{
     }
 }
 
-.big-heart{
-    font-size:140px;
-
-    animation:beat 1s infinite;
-
-    filter:drop-shadow(
-        0 0 20px #ff4d88
-    );
-}
-
 @keyframes beat{
     0%{transform:scale(1);}
     50%{transform:scale(1.25);}
@@ -126,22 +166,12 @@ button:hover{
 @keyframes fadeIn{
     from{
         opacity:0;
-        transform:translateY(20px);
+        transform:translateY(25px);
     }
     to{
         opacity:1;
         transform:translateY(0);
     }
-}
-
-#days-counter{
-    color:#ff7eb3;
-
-    font-size:28px;
-
-    font-weight:bold;
-
-    margin-top:20px;
 }
 
 </style>
@@ -156,6 +186,8 @@ button:hover{
     <p>
         У меня есть кое-что для тебя...
     </p>
+
+    <br>
 
     <button onclick="showLove()">
         Открыть ❤️
@@ -174,30 +206,37 @@ button:hover{
     </h1>
 
     <p>
-        Я сделал этот сайт специально для тебя ❤️
+        Я сделал этот маленький сайт специально для тебя ❤️
+
         <br><br>
 
-        Спасибо, что ты есть в моей жизни.
-        <br>
+        Мне захотелось сделать что-то особенное,
+        а не просто написать обычное сообщение.
 
-        Ты делаешь мои дни лучше 😊
+        <br><br>
+
+        Спасибо за твою улыбку,
+        за наши разговоры
+        и за то, что ты есть в моей жизни. 😊
     </p>
 
     <h2 id="days-counter"></h2>
+
+    <br>
 
     <a href="secret.html">
         <button>
             💌 Открыть секрет
         </button>
-    </a> 
+    </a>
 
-<br><br>
+    <br><br>
 
-<a href="compliments.html">
-    <button>
-        🎁 Маленький сюрприз 
-    </button>
-</a>
+    <a href="compliments.html">
+        <button>
+            🎁 Маленький сюрприз
+        </button>
+    </a>
 
 </div>
 
@@ -213,29 +252,33 @@ const startDate = new Date("2025-12-03");
 const today = new Date();
 
 const days = Math.floor(
-    (today - startDate) /
-    (1000 * 60 * 60 * 24)
+(today - startDate) /
+(1000 * 60 * 60 * 24)
 );
 
-document.getElementById("days-counter").innerHTML =
+document.getElementById(
+"days-counter"
+).innerHTML =
 `❤️ Мы знакомы уже ${days} дней ❤️`;
 
 function createHeart(){
 
     const heart =
-        document.createElement("div");
+    document.createElement("div");
 
     heart.classList.add("heart");
 
     heart.innerHTML = "❤️";
 
     heart.style.left =
-        Math.random() * 100 + "vw";
+    Math.random()*100 + "vw";
 
     heart.style.fontSize =
-        (20 + Math.random() * 40) + "px";
+    (20 + Math.random()*40) + "px";
 
-    document.body.appendChild(heart);
+    document.body.appendChild(
+    heart
+    );
 
     setTimeout(()=>{
         heart.remove();
@@ -248,3 +291,5 @@ setInterval(createHeart,300);
 
 </body>
 </html>
+```
+
